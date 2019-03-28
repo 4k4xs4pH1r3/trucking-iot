@@ -31,8 +31,8 @@ class WebSocketService {
     //ws = new WebSocket(combinedConfig.getString("websocket-uri")) // Play WS
 
 
-    //ws = new WebSocket("ws://sandbox-hdf.hortonworks.com:17000/trucking-events") // NiFi WS
-    ws = new WebSocket("ws://sandbox-hdf.hortonworks.com:15100/ws") // Play WS
+    //ws = new WebSocket("ws://10.47.10.10:17000/trucking-events") // NiFi WS
+    ws = new WebSocket("ws://10.47.10.10:15100/ws") // Play WS
 
     ws.onopen = onOpen _
     ws.onclose = onClose _

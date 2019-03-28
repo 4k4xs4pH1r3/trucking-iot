@@ -40,7 +40,7 @@ class KafkaWebSocket @Inject() (implicit system: ActorSystem, materializer: Mate
       .getConfig("trucking-web-application.backend")
 
     val consumerSettings = ConsumerSettings(system, new ByteArrayDeserializer, new StringDeserializer)
-      //.withBootstrapServers("sandbox-hdf.hortonworks.com:6667")
+      //.withBootstrapServers("10.47.10.10:6667")
       .withBootstrapServers(combinedConfig.getString("kafka.bootstrap-servers"))
       .withGroupId("group1")
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")

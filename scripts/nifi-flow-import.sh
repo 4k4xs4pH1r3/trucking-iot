@@ -4,7 +4,7 @@
 projDir="$(cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd)"
 
 echo "Stopping NiFi"
-curl -u admin:admin -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context": "Stop NIFi"}, "ServiceInfo": {"state": "INSTALLED"}}' http://sandbox-hdf.hortonworks.com:8080/api/v1/clusters/Sandbox/services/NIFI | python $projDir/scripts/wait-until-done.py
+curl -u admin:admin -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context": "Stop NIFi"}, "ServiceInfo": {"state": "INSTALLED"}}' http://10.47.10.10:8080/api/v1/clusters/Sandbox/services/NIFI | python $projDir/scripts/wait-until-done.py
 
 # Built-in flows that can be used are:
 #
@@ -19,4 +19,4 @@ mv /var/lib/nifi/conf/flow.xml.gz /var/lib/nifi/conf/flow.xml.gz.bak
 cp -f $projDir/trucking-nifi-templates/flows/kafka-to-kafka-with-schema-2.xml.gz /var/lib/nifi/conf/flow.xml.gz
 
 echo "Starting NiFi via Ambari"
-curl -u admin:admin -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context": "Start NIFi"}, "ServiceInfo": {"state": "STARTED"}}' http://sandbox-hdf.hortonworks.com:8080/api/v1/clusters/Sandbox/services/NIFI | python $projDir/scripts/wait-until-done.py
+curl -u admin:admin -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context": "Start NIFi"}, "ServiceInfo": {"state": "STARTED"}}' http://10.47.10.10:8080/api/v1/clusters/Sandbox/services/NIFI | python $projDir/scripts/wait-until-done.py

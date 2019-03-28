@@ -30,7 +30,7 @@ def process_task(task):
     raise Exception(msg)
 
 while True:
-  task_request = urllib.urlopen("http://admin:admin@sandbox-hdf.hortonworks.com:8080/api/v1/clusters/Sandbox/requests/%d?fields=tasks/Tasks/*" % request_id)
+  task_request = urllib.urlopen("http://admin:admin@10.47.10.10:8080/api/v1/clusters/Sandbox/requests/%d?fields=tasks/Tasks/*" % request_id)
   tasks = json.load(task_request)["tasks"]
   if all(process_task(task) for task in tasks):
     sys.exit(0)
